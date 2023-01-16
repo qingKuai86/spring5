@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="userDaoBean" class="dao.UserDao"></bean>
+    <bean id="vipDaoBean" class="dao.VipDao"></bean>
+
+    <!--set注入内部部bean方式-->
+  <!--  <bean id="userServiceBean" class="service.com.power.service.UserService">
+         <property name="userDao" ref="userDaoBean"></property>
+    </bean>-->
+
+    <!--set注入外部bean方式(一般不用),name 是setUserDao方法除去set，u小写得来的-->
+   <!--<bean id="userServiceBean" class="service.com.power.service.UserService">
+        <property name="userDao">
+            <bean class="dao.UserDao"></bean>
+        </property>
+   </bean>-->
+
+    <bean id="userServiceBean" class="service.com.power.service.UserService">
+
+        <!--构造注入方式1-->
+        <constructor-arg index="0" ref="userDaoBean"></constructor-arg>
+        <constructor-arg index="1" ref="vipDaoBean"></constructor-arg>
+
+       <!--构造注入方式2
+        <constructor-arg name="userDao" ref="userDaoBean"></constructor-arg>
+        <constructor-arg name="vipDao" ref="vipDaoBean"></constructor-arg>
+        -->
+        <!--构造注入方式3
+        <constructor-arg ref="vipDaoBean"></constructor-arg>
+        <constructor-arg ref="userDaoBean"></constructor-arg>
+        -->
+    </bean>
+
+
+</beans>

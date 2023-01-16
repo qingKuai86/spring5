@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="UserDaoImplForOracle" class="demo2.dao.impl.UserDaoImplForOracle"></bean>
+    <bean id="UserDaoImplForMySQL" class="demo2.dao.impl.UserDaoImplForMySQL"></bean>
+    <bean id="UserServiceImpl" class="demo2.service.impl.UserServiceImpl"></bean>
+
+    <bean id="UserAction" class="demo2.web.UserAction" scope="prototype"></bean>
+</beans>
